@@ -20,7 +20,7 @@ BOOL CEarthStoryFlightDoc::OnNewDocument()
 	if (!CDocument::OnNewDocument())
 		return FALSE;
 
-	SetTitle(_T("Earth Story Flight (ESF)"));
+	SetTitle(_T("\uC774\uC57C\uAE30\uB97C \uB530\uB77C \uB6F0\uB098\uB294 \uC9C0\uAD6C\uC5EC\uD589"));
 	return TRUE;
 }
 
