@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "framework.h"
 #include "EarthStoryFlightDoc.h"
 
@@ -20,7 +20,7 @@ BOOL CEarthStoryFlightDoc::OnNewDocument()
 	if (!CDocument::OnNewDocument())
 		return FALSE;
 
-	SetTitle(_T("\uC774\uC57C\uAE30\uB97C \uB530\uB77C \uB6F0\uB098\uB294 \uC9C0\uAD6C\uC5EC\uD589"));
+	SetTitle(_T("이야기를 따라 떠나는 지구여행"));
 	return TRUE;
 }
 

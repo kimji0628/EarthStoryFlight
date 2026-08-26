@@ -4,6 +4,7 @@
 #include "MainFrm.h"
 #include "EarthStoryFlightDoc.h"
 #include "EarthStoryFlightView.h"
+#include "GoogleEarthPoC.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -51,6 +52,9 @@ BOOL CEarthStoryFlightApp::InitInstance()
 
 	m_pMainWnd->ShowWindow(SW_SHOW);
 	m_pMainWnd->UpdateWindow();
+
+	GoogleEarthPoC::Run();
+
 	return TRUE;
 }
 

@@ -66,6 +66,7 @@
     <ClInclude Include="EarthStoryFlightDoc.h" />
     <ClInclude Include="EarthStoryFlightView.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="GoogleEarthPoC.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="resource.h" />
@@ -74,6 +75,7 @@
   <ItemGroup>
     <ClCompile Include="EarthStoryFlight.cpp" />
     <ClCompile Include="EarthStoryFlightDoc.cpp" />
+    <ClCompile Include="GoogleEarthPoC.cpp" />
     <ClCompile Include="EarthStoryFlightView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
     <ClCompile Include="pch.cpp">
