@@ -21,6 +21,18 @@
     <ClInclude Include="EarthStoryFlightDoc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EsfPaths.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapRegionService.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapWebViewHost.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="EarthStoryFlightView.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -48,6 +60,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="EarthStoryFlightDoc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EsfPaths.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MapConfig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MapRegionService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MapWebViewHost.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GoogleEarthPoC.cpp">

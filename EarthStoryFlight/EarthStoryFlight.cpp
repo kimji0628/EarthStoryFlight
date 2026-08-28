@@ -4,11 +4,22 @@
 #include "MainFrm.h"
 #include "EarthStoryFlightDoc.h"
 #include "EarthStoryFlightView.h"
-#include "GoogleEarthPoC.h"
+#include "TourCameraRangeSettings.h"
+#include "TourCameraTiltSettings.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
+
+namespace
+{
+	bool IsComApartmentInitialized()
+	{
+		APTTYPE aptType = APTTYPE_CURRENT;
+		APTTYPEQUALIFIER aptQualifier = APTTYPEQUALIFIER_NONE;
+		return SUCCEEDED(::CoGetApartmentType(&aptType, &aptQualifier));
+	}
+}
 
 CEarthStoryFlightApp theApp;
 
@@ -23,16 +34,30 @@ BOOL CEarthStoryFlightApp::InitInstance()
 {
 	INITCOMMONCONTROLSEX InitCtrls;
 	InitCtrls.dwSize = sizeof(InitCtrls);
-	InitCtrls.dwICC = ICC_WIN95_CLASSES;
+	InitCtrls.dwICC = ICC_WIN95_CLASSES | ICC_BAR_CLASSES;
 	InitCommonControlsEx(&InitCtrls);
 
 	CWinApp::InitInstance();
+
+	if (!IsComApartmentInitialized())
+	{
+		if (!AfxOleInit())
+		{
+			const HRESULT oleHr = ::OleInitialize(nullptr);
+			CString message;
+			message.Format(L"COM/OLE initialization failed. HRESULT=0x%08X", oleHr);
+			AfxMessageBox(message, MB_ICONERROR);
+			return FALSE;
+		}
+	}
 
 	EnableTaskbarInteraction(FALSE);
 
 	SetRegistryKey(_T("EarthStoryFlight"));
 
 	LoadStdProfileSettings(4);
+	TourCameraRangeSettings::Instance().Load();
+	TourCameraTiltSettings::Instance().Load();
 
 	CSingleDocTemplate* pDocTemplate;
 	pDocTemplate = new CSingleDocTemplate(
@@ -52,8 +77,6 @@ BOOL CEarthStoryFlightApp::InitInstance()
 
 	m_pMainWnd->ShowWindow(SW_SHOW);
 	m_pMainWnd->UpdateWindow();
-
-	GoogleEarthPoC::Run();
 
 	return TRUE;
 }

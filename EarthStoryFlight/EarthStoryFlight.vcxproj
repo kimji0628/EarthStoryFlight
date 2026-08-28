@@ -32,10 +32,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)Bin\Debug\x64\</OutDir>
-    <IntDir>$(ProjectDir)obj\Debug\x64\</IntDir>
-    <TargetName>EarthStoryFlight</TargetName>
+    <OutDir>$(SolutionDir)Bin\</OutDir>
+    <IntDir>$(SolutionDir)Build\Debug\x64\</IntDir>
+    <TargetName>EarthStoryFlight_D</TargetName>
   </PropertyGroup>
+  <!-- Release (future): OutDir=$(SolutionDir)Bin\, IntDir=Build\Release\x64\, TargetName=EarthStoryFlight_B -->
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -45,16 +46,35 @@
       <PreprocessorDefinitions>_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(SolutionDir)packages\Microsoft.Web.WebView2\build\native\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)packages\Microsoft.Web.WebView2\build\native\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>WebView2LoaderStatic.lib;winhttp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
       <ValidateAllParameters>true</ValidateAllParameters>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </Midl>
+    <PostBuildEvent>
+      <Command>if not exist "$(OutDir)Config" mkdir "$(OutDir)Config"
+if not exist "$(OutDir)Data\Web" mkdir "$(OutDir)Data\Web"
+if not exist "$(OutDir)Data\Maps\GeoBounds" mkdir "$(OutDir)Data\Maps\GeoBounds"
+if not exist "$(OutDir)Data\Maps\PlaceBased" mkdir "$(OutDir)Data\Maps\PlaceBased"
+if not exist "$(OutDir)Data\Tours" mkdir "$(OutDir)Data\Tours"
+if not exist "$(OutDir)Output\KML" mkdir "$(OutDir)Output\KML"
+if not exist "$(OutDir)Output\KMZ" mkdir "$(OutDir)Output\KMZ"
+if not exist "$(OutDir)Output\Video" mkdir "$(OutDir)Output\Video"
+if not exist "$(OutDir)Output\Export" mkdir "$(OutDir)Output\Export"
+copy /Y "$(SolutionDir)Data\Web\map.html" "$(OutDir)Data\Web\"
+copy /Y "$(SolutionDir)Config\maps.json.example" "$(OutDir)Config\"
+copy /Y "$(SolutionDir)Data\Tours\geumsan_10_scenic_tour_final.kml" "$(OutDir)Data\Tours\"
+</Command>
+    </PostBuildEvent>
     <ResourceCompile>
       <Culture>0x0412</Culture>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -64,20 +84,42 @@
   <ItemGroup>
     <ClInclude Include="EarthStoryFlight.h" />
     <ClInclude Include="EarthStoryFlightDoc.h" />
+    <ClInclude Include="EsfDebugLog.h" />
+    <ClInclude Include="EsfPaths.h" />
     <ClInclude Include="EarthStoryFlightView.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GoogleEarthPoC.h" />
+    <ClInclude Include="MapConfig.h" />
+    <ClInclude Include="MapLibraryDlg.h" />
+    <ClInclude Include="MapLibraryService.h" />
+    <ClInclude Include="MapRegionService.h" />
+    <ClInclude Include="MapWebViewHost.h" />
     <ClInclude Include="MainFrm.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="targetver.h" />
+    <ClInclude Include="SavedMapTypes.h" />
+    <ClInclude Include="TourCameraRangeDlg.h" />
+    <ClInclude Include="TourCameraRangeSettings.h" />
+    <ClInclude Include="TourCameraTiltDlg.h" />
+    <ClInclude Include="TourCameraTiltSettings.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EarthStoryFlight.cpp" />
     <ClCompile Include="EarthStoryFlightDoc.cpp" />
+    <ClCompile Include="EsfDebugLog.cpp" />
+    <ClCompile Include="EsfPaths.cpp" />
     <ClCompile Include="GoogleEarthPoC.cpp" />
+    <ClCompile Include="MapConfig.cpp" />
+    <ClCompile Include="MapLibraryDlg.cpp" />
+    <ClCompile Include="MapLibraryService.cpp" />
+    <ClCompile Include="MapRegionService.cpp" />
+    <ClCompile Include="MapWebViewHost.cpp" />
     <ClCompile Include="EarthStoryFlightView.cpp" />
     <ClCompile Include="MainFrm.cpp" />
+    <ClCompile Include="TourCameraRangeDlg.cpp" />
+    <ClCompile Include="TourCameraRangeSettings.cpp" />
+    <ClCompile Include="TourCameraTiltDlg.cpp" />
+    <ClCompile Include="TourCameraTiltSettings.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
