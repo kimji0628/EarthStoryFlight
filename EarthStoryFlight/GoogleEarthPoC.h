@@ -1,5 +1,7 @@
 #pragma once
 
+#include "MapRegionService.h"
+
 class GoogleEarthPoC
 {
 public:
@@ -7,6 +9,9 @@ public:
 	static bool RunGeumsan8SceneryTour(CString& outErrorMessage);
 	static bool RunGeumsan10ScenicTour(CString& outErrorMessage);
 	static bool RunExodusMemphisToJerichoTour(CString& outErrorMessage);
+	static bool RunKoreaBranchOrbitTour(CString& outErrorMessage);
+	static bool RunWorldHeadquartersOrbitTour(CString& outErrorMessage);
+	static bool RunSavedRouteTour(const MapRoute& route, CString& outErrorMessage);
 	static CString GetSolutionRootPath();
 
 private:
@@ -33,6 +38,8 @@ private:
 	static bool RunTourWithDualLaunch(
 		const CString& sourcePath,
 		const CString& playPath,
-		CString& outErrorMessage);
+		CString& outErrorMessage,
+		bool applyTiltSettings = true);
+	static int EstimateGxTourDurationMs(const CStringA& utf8Content);
 };
 

@@ -10,6 +10,8 @@ protected:
 
 public:
 	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+	void StartRecordTest(const CString& outputPath, int durationMs);
+	void SetMapCursorStatus(const CString& text);
 
 protected:
 	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
@@ -33,6 +35,15 @@ protected:
 	afx_msg void OnTourGeumsan8Scenery();
 	afx_msg void OnTourGeumsan10Scenic();
 	afx_msg void OnTourExodusMemphisToJericho();
+	afx_msg void OnTourKoreaBranchOrbit();
+	afx_msg void OnTourWorldHeadquartersOrbit();
+	afx_msg void OnTourRecordStart();
+	afx_msg void OnTourRecordStop();
+	afx_msg void OnUpdateTourRecordStart(CCmdUI* pCmdUI);
+	afx_msg void OnUpdateTourRecordStop(CCmdUI* pCmdUI);
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	afx_msg void OnDestroy();
+	afx_msg LRESULT OnStartRecordTest(WPARAM wParam, LPARAM lParam);
 	DECLARE_MESSAGE_MAP()
 
 private:
@@ -44,6 +55,12 @@ private:
 	void RefreshTourCameraUi();
 	void SetCameraRangePreset(int rangeM);
 	void SetCameraTiltPreset(int tiltDeg);
+	void StopTourRecording(bool autoStopped);
 
 	CStatusBar m_wndStatusBar;
+	CString m_mapCursorStatus;
+	UINT_PTR m_recordTimer = 0;
+	bool m_recordTestMode = false;
+	CString m_recordTestPath;
+	int m_recordTestMs = 0;
 };

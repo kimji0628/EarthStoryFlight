@@ -53,7 +53,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)packages\Microsoft.Web.WebView2\build\native\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>WebView2LoaderStatic.lib;winhttp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>WebView2LoaderStatic.lib;winhttp.lib;mfplat.lib;mfreadwrite.lib;mfuuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -73,6 +73,8 @@ if not exist "$(OutDir)Output\Export" mkdir "$(OutDir)Output\Export"
 copy /Y "$(SolutionDir)Data\Web\map.html" "$(OutDir)Data\Web\"
 copy /Y "$(SolutionDir)Config\maps.json.example" "$(OutDir)Config\"
 copy /Y "$(SolutionDir)Data\Tours\geumsan_10_scenic_tour_final.kml" "$(OutDir)Data\Tours\"
+copy /Y "$(SolutionDir)Data\Tours\JW_Korea_Branch_2000m_1000m_500m_300m_Orbit_Tour.kml" "$(OutDir)Data\Tours\"
+copy /Y "$(SolutionDir)Data\Tours\JW_World_Headquarters_2000m_1000m_500m_300m_Orbit_Tour.kml" "$(OutDir)Data\Tours\"
 </Command>
     </PostBuildEvent>
     <ResourceCompile>
@@ -102,6 +104,7 @@ copy /Y "$(SolutionDir)Data\Tours\geumsan_10_scenic_tour_final.kml" "$(OutDir)Da
     <ClInclude Include="TourCameraRangeSettings.h" />
     <ClInclude Include="TourCameraTiltDlg.h" />
     <ClInclude Include="TourCameraTiltSettings.h" />
+    <ClInclude Include="TourVideoRecorder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EarthStoryFlight.cpp" />
@@ -120,6 +123,7 @@ copy /Y "$(SolutionDir)Data\Tours\geumsan_10_scenic_tour_final.kml" "$(OutDir)Da
     <ClCompile Include="TourCameraRangeSettings.cpp" />
     <ClCompile Include="TourCameraTiltDlg.cpp" />
     <ClCompile Include="TourCameraTiltSettings.cpp" />
+    <ClCompile Include="TourVideoRecorder.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>

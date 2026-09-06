@@ -15,7 +15,7 @@ LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        130
-#define _APS_NEXT_COMMAND_VALUE         32836
+#define _APS_NEXT_COMMAND_VALUE         32870
 #define _APS_NEXT_CONTROL_VALUE         1000
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
@@ -71,6 +71,11 @@ BEGIN
         MENUITEM "\xb1\xdd\xbb\xea\xc6\xd0\xb0\xe6\x20\xbb\xf3\xb9\xf8\x20\xbc\xb1\xc8\xb8\x20\xba\xf1\x20\xc7\xe0", ID_TOUR_GEUMSAN_8SCENERY
         MENUITEM "\xb1\xdd\xbb\xea\x20\x31\x30\xb0\xe6", ID_TOUR_GEUMSAN_10SCENIC
         MENUITEM "\xc3\xe2\xbe\xd6\xb1\xb8\x20\xb0\xe6\xb7\xce", ID_TOUR_EXODUS_MEMPHIS_JERICHO
+        MENUITEM "\xbf\xa9\xc8\xa3\xbf\xcd\xc0\xc7\x20\xc1\xf5\xc0\xce\x20\xc7\xd1\xb1\xb9\xc1\xf6\xba\xce\x20\xbc\xf8\xc8\xaf\x20\xc5\xf5\xbe\xee", ID_TOUR_KOREA_BRANCH_ORBIT
+        MENUITEM "\xbf\xa9\xc8\xa3\xbf\xcd\xc0\xc7\x20\xc1\xf5\xc0\xce\x20\xbc\xbc\xb0\xe8\x20\xba\xbb\xba\xce\x20\xbc\xf8\xc8\xaf\x20\xc5\xf5\xbe\xee", ID_TOUR_WORLD_HQ_ORBIT
+        MENUITEM SEPARATOR
+        MENUITEM "\xb3\xed\xc8\xad \xbd\xc3\xc0\xdb", ID_TOUR_RECORD_START
+        MENUITEM "\xb3\xed\xc8\xad \xc1\xdf\xc1\xf6", ID_TOUR_RECORD_STOP
     END
     POPUP "&Help"
     BEGIN

@@ -39,6 +39,10 @@
 #define ID_TOUR_CAMERA_TILT_70          32862
 #define ID_TOUR_CAMERA_TILT_75          32863
 #define ID_TOUR_CAMERA_TILT_CUSTOM      32864
+#define ID_TOUR_RECORD_START            32866
+#define ID_TOUR_RECORD_STOP             32867
+#define ID_TOUR_KOREA_BRANCH_ORBIT      32868
+#define ID_TOUR_WORLD_HQ_ORBIT          32869
 
 #define IDD_TOUR_CAMERA_RANGE           104
 #define IDC_SLIDER_TOUR_RANGE           1008
